@@ -1,7 +1,7 @@
 model IndustryCategory {
   id          String  @id @default(uuid())
-  name        String  @unique // "Software Engineering", "Marketing", "Finance"...
-  slug        String  @unique // "software-engineering", "marketing"
+  name        String  @unique
+  slug        String  @unique
   description String?
 
   interviews Interview[]
@@ -30,6 +30,14 @@ enum InterviewStatus {
   ACTIVE
   COMPLETED
   CANCELLED
+}
+
+enum InterviewType {
+  TECHNICAL
+  BEHAVIORAL
+  SYSTEM_DESIGN
+  HR
+  MIXED
 }
 
 model Interview {
@@ -61,14 +69,6 @@ model Interview {
   updatedAt DateTime @updatedAt
 
   @@map("interviews")
-}
-
-enum InterviewType {
-  TECHNICAL
-  BEHAVIORAL
-  SYSTEM_DESIGN
-  HR
-  MIXED
 }
 
 enum MessageRole {
