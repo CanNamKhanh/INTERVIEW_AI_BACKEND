@@ -1,0 +1,19 @@
+enum MessageRole {
+    USER
+    ASSISTANT
+    SYSTEM
+}
+
+model Message {
+    id String @id @default(uuid())
+
+    interviewId String
+    interview   Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+
+    role    MessageRole
+    content String      @db.Text
+
+    createdAt DateTime @default(now())
+
+    @@map("messages")
+}

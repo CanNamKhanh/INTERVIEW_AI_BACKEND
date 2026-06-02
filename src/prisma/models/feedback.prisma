@@ -1,0 +1,16 @@
+model Feedback {
+    id String @id @default(uuid())
+
+    interviewId String    @unique
+    interview   Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+
+    overallScore Int?
+
+    strengths  String? @db.Text
+    weaknesses String? @db.Text
+    summary    String? @db.Text
+
+    createdAt DateTime @default(now())
+
+    @@map("feedbacks")
+}

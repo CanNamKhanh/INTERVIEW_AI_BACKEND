@@ -1,0 +1,10 @@
+model IndustryCategory {
+    id          String  @id @default(uuid())
+    name        String  @unique
+    slug        String  @unique
+    description String?
+
+    interviews Interview[]
+
+    @@map("industry_categories")
+}

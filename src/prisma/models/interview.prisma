@@ -1,0 +1,44 @@
+enum InterviewStatus {
+    ACTIVE
+    COMPLETED
+    CANCELLED
+}
+
+enum InterviewType {
+    TECHNICAL
+    BEHAVIORAL
+    SYSTEM_DESIGN
+    HR
+    MIXED
+}
+
+model Interview {
+    id String @id @default(uuid())
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    categoryId String?
+    category   IndustryCategory? @relation(fields: [categoryId], references: [id])
+
+    title    String
+    position String
+    level    String
+
+    yearsOfExperience Int?
+    type              InterviewType
+
+    language       String @default("en")
+    targetDuration Int?
+    questionCount  Int?
+
+    status InterviewStatus @default(ACTIVE)
+
+    messages Message[]
+    feedback Feedback?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@map("interviews")
+}
