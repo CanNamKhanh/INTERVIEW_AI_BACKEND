@@ -8,3 +8,5 @@ export const openai = new OpenAI({
 });
 
 export const AI_MODEL = "gpt-4o-mini";
+
+// force deploy
