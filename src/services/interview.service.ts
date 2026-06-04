@@ -188,3 +188,19 @@ export const deleteInterviewService = async (interviewId: string) => {
     throw new Error("Interview not found or already deleted.");
   }
 };
+
+export const getAllInterviewsService = async () => {
+  const interviews = await prisma.interview.findMany({
+    include: {
+      category: true, // Lấy kèm thông tin chi tiết của category
+      _count: {
+        select: { messages: true }, // Đếm tổng số tin nhắn đã trao đổi trong interview này
+      },
+    },
+    orderBy: {
+      createdAt: "desc", // Sắp xếp cuộc phỏng vấn mới nhất lên đầu
+    },
+  });
+
+  return interviews;
+};
