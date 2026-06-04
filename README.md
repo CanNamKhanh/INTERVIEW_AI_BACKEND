@@ -16,26 +16,26 @@
 ## USER
 
 - Get me:
-<!-- GET /user/me -->
+<!-- GET /user/me (cần token)-->
 
 ## INTERVIEW
 
 - Get all:
-<!-- GET /interview/all -->
+<!-- GET /interview/all (cần token)-->
 
 - Create:
-<!-- POST /interview/create -->
+<!-- POST /interview/create (cần token)-->
 
 - End:
-<!-- POST /interview/end -->
+<!-- POST /interview/end (cần token)-->
 
 - Delete:
-<!-- DELETE /interview/delete -->
+<!-- DELETE /interview/delete (cần token)-->
 
 ## Message
 
 - Send:
-<!-- POST message/send -->
+<!-- POST message/send (cần token)-->
 
 - Get all message in interview by id:
-<!-- GET message/:interviewId -->
+<!-- GET message/:interviewId (cần token)-->
