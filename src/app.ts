@@ -9,6 +9,7 @@ import authRoutes from "./routes/auth.route";
 import userRoutes from "./routes/user.route";
 import interviewRoutes from "./routes/interview.route";
 import messageRoutes from "./routes/message.route";
+import feedbackRoutes from "./routes/feedback.route";
 
 // APP & HTTP SERVER
 
@@ -38,6 +39,7 @@ app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 app.use("/interview", interviewRoutes);
 app.use("/message", messageRoutes);
+app.use("/feedback", feedbackRoutes);
 
 async function bootstrap(): Promise<void> {
   // getRedis();
