@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
 import { getInterviewFeedbackService } from "../services/feedback.service";
 
-export interface FeedbackRequest extends Request {
-  interviewId?: string;
-}
-
 export const getInterviewFeedback = async (
-  req: FeedbackRequest,
+  req: Request<{ interviewId: string }>,
   res: Response,
 ): Promise<void> => {
   try {
-    const { interviewId } = req.body;
+    const { interviewId } = req.params;
+
+    if (!interviewId) {
+      res.status(400).json({ success: false, message: "Missing interviewId" });
+      return;
+    }
+
     const feedback = await getInterviewFeedbackService(interviewId);
     res.status(200).json({
       success: true,
